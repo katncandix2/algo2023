@@ -2,4 +2,8 @@
 
 ./.idea/*
 
+./target/*
+
+/.idea/*
+/target/*
 algo2023.iml
