@@ -1,11 +1,11 @@
-package MyString;
+package MyHash;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
 
+    // 242.有效的字母异位词
     public boolean isAnagram(String s, String t) {
         int[]arr = new int[26];
 
@@ -28,6 +28,7 @@ public class Main {
         return true;
     }
 
+    //349. 两个数组的交集
     public int[] intersection(int[] nums1, int[] nums2) {
         HashSet<Integer> res = new HashSet<>();
         HashSet<Integer> res1 = new HashSet<>();
@@ -45,6 +46,7 @@ public class Main {
         return res.stream().mapToInt(i -> i).toArray();
     }
 
+    // 1.两数之和
     public int[] twoSum(int[] nums, int target) {
 
         HashMap<Integer, Integer> m1 = new HashMap<>();
@@ -61,8 +63,7 @@ public class Main {
     }
 
 
-    //https://leetcode.cn/problems/4sum-ii/
-
+    // 454.四数相加II
     public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
         HashMap<Integer, Integer> m1 = new HashMap<>();
 

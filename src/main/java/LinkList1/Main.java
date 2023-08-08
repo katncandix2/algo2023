@@ -19,6 +19,7 @@ class ListNode{
 public class Main {
 
     //移除链表元素
+    //203.移除链表元素
     public ListNode removeElements(ListNode head, int val) {
         ListNode dummyHead = new ListNode();
         dummyHead.next = head;
@@ -38,6 +39,7 @@ public class Main {
     //两两交换链表
     // 1---> 2 --->3 -->4
     // 2---> 1---->4--->3
+    //24. 两两交换链表中的节点
     public ListNode swapPairs(ListNode head) {
         //虚拟头结点
         ListNode dummyHead = new ListNode();
