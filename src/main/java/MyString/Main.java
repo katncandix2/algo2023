@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Main {
 
+
     public boolean isAnagram(String s, String t) {
         int[]arr = new int[26];
 
@@ -57,6 +58,40 @@ public class Main {
         }
 
         return new int[0];
+    }
+
+
+    //https://leetcode.cn/problems/4sum-ii/
+
+    public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
+        HashMap<Integer, Integer> m1 = new HashMap<>();
+
+        int  res = 0;
+
+        for (int i = 0;i< nums1.length;i++){
+            for (int j=0;j<nums2.length;j++){
+                int tmpSum = nums1[i] + nums2[j];
+                if (m1.containsKey(tmpSum)){
+                    Integer cnt = m1.get(tmpSum);
+                    cnt++;
+                    m1.put(tmpSum,cnt);
+                }else{
+                    m1.put(tmpSum,1);
+                }
+            }
+        }
+
+
+        for (int i = 0;i<nums3.length;i++){
+            for (int j=0;j<nums4.length;j++){
+                int tmpSum = 0 - (nums3[i]+nums4[j]);
+                if (m1.containsKey(tmpSum)){
+                     res += m1.get(tmpSum);
+                }
+            }
+        }
+
+        return res;
     }
 
     public static void main(String[] args) {
