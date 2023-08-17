@@ -147,7 +147,8 @@ public class Main {
     }
 
 
-    public List<List<Integer>> fourSum1(int[] nums, int target) {
+    //18 四数之和
+    public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
 
