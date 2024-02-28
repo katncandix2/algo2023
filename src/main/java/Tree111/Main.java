@@ -150,7 +150,7 @@ public class Main {
         return root;
     }
 
-    //101.对成二叉树
+    //101.对称二叉树
     public boolean isSymmetric(TreeNode root) {
 
         if (root.left==null && root.right==null)
