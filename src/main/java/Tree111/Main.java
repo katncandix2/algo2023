@@ -1,10 +1,6 @@
 package Tree111;
 
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Main {
 
@@ -12,6 +8,10 @@ public class Main {
         TreeNode root = mockTree();
         List<List<Integer>> lists = levelOrder(root);
         System.out.println(lists);
+
+
+        List<List<Integer>> lists1 = preOrder(root);
+        System.out.println(lists1);
     }
 
     public static TreeNode mockTree(){
@@ -85,4 +85,171 @@ public class Main {
     }
 
 
+    public List<Integer> preorderTraversal(TreeNode root) {
+
+        ArrayList<Integer> res = new ArrayList<>();
+        preorderTraversal(root,res);
+        return res;
+    }
+
+    public List<Integer> preorderTraversal1(TreeNode root) {
+
+        if (root == null)
+            return new ArrayList<>();
+
+        ArrayList<Integer> res = new ArrayList<>();
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.add(root);
+        while (!stack.isEmpty()){
+
+            TreeNode tmpNode = stack.pop();
+
+            if (tmpNode!=null)
+                res.add(tmpNode.val);
+            else
+                continue;
+
+            stack.add(tmpNode.right);
+            stack.add(tmpNode.left);
+
+        }
+        return res;
+    }
+
+
+    public void preorderTraversal(TreeNode root,List<Integer> list) {
+        if (root==null)
+            return;
+
+        list.add(root.val);
+
+        preorderTraversal(root.left,list);
+        preorderTraversal(root.right,list);
+    }
+
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        inorderTraversal(root,res);
+        return res  ;
+    }
+
+
+    public void inorderTraversal(TreeNode root,List<Integer> list) {
+        if (root==null)
+            return;
+
+        inorderTraversal(root.left,list);
+        list.add(root.val);
+        inorderTraversal(root.right,list);
+    }
+
+    public List<Integer> inorderTraversal1(TreeNode root) {
+
+        ArrayList<Integer> res = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root; // 游标
+
+        //
+        while (cur!=null || !stack.isEmpty()){
+            if (cur!=null){
+                stack.add(cur);
+                cur = cur.left;
+            }else {
+                TreeNode pop = stack.pop();
+                res.add(pop.val);
+                cur = pop.right;
+            }
+        }
+
+        return res  ;
+    }
+
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        postorderTraversal(root,res);
+        return res  ;
+    }
+
+
+    //中右左 (翻转)---> 左右中
+    public List<Integer> postorderTraversal1(TreeNode root) {
+        if (root == null)
+            return new ArrayList<>();
+
+        ArrayList<Integer> res = new ArrayList<>();
+
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.add(root);
+        while (!stack.isEmpty()){
+
+            TreeNode tmpNode = stack.pop();
+
+            if (tmpNode!=null)
+                res.add(tmpNode.val);
+            else
+                continue;
+
+            stack.add(tmpNode.left);
+            stack.add(tmpNode.right);
+
+        }
+        Collections.reverse(res);
+        return res;
+    }
+
+
+    public void postorderTraversal(TreeNode root,List<Integer> list) {
+
+        if (root==null)
+            return;
+
+        postorderTraversal(root.left,list);
+        postorderTraversal(root.right,list);
+        list.add(root.val);
+
+    }
+
+
+
+    public static List<List<Integer>> preOrder(TreeNode root) {
+
+        if(root == null)
+            return new ArrayList<>();
+
+
+
+        List res = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+
+        stack.add(root);
+
+        while (!stack.isEmpty()){
+
+
+            List tmpList = new ArrayList<Integer>();
+            //必须取size while 的话会从头取到尾
+            int currentSize = stack.size();
+            for (int i=0;i<currentSize;i++){
+
+                TreeNode tmpNode = stack.pop();
+
+                tmpList.add(tmpNode.val);
+
+                if (tmpNode.left!=null)
+                    stack.add(tmpNode.left);
+
+                if (tmpNode.right!=null)
+                    stack.add(tmpNode.right);
+            }
+
+            res.add(tmpList);
+
+        }
+
+        return  res;
+    }
 }
