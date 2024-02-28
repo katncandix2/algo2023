@@ -136,7 +136,7 @@ public class Main {
     }
 
 
-    //题目连接 144.翻转二叉树
+    //题目连接 226.翻转二叉树
     public TreeNode mirrorTree(TreeNode root) {
         if(root == null){
             return root;
@@ -148,6 +148,28 @@ public class Main {
         mirrorTree(root.left);
         mirrorTree(root.right);
         return root;
+    }
+
+
+    //236. 二叉树的最近公共祖先
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+        if (root == null)
+            return null ;
+        if (root == p || root == q)
+            return root;
+
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+
+        if (left!=null && right!=null)
+            return root;
+        else if (left==null && right!=null)
+            return right;
+        else if (left!=null&& right==null)
+            return left;
+        else
+            return null;
     }
 
     //101.对称二叉树
