@@ -136,6 +136,42 @@ public class Main {
     }
 
 
+    //题目连接 144.翻转二叉树
+    public TreeNode mirrorTree(TreeNode root) {
+        if(root == null){
+            return root;
+        }
+
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+        mirrorTree(root.left);
+        mirrorTree(root.right);
+        return root;
+    }
+
+    //101.对成二叉树
+    public boolean isSymmetric(TreeNode root) {
+
+        if (root.left==null && root.right==null)
+            return true;
+
+        if (root.left!=null && root.right ==null)
+            return false;
+
+        if (root.left==null && root.right !=null)
+            return false;
+
+        if(root.left.val != root.right.val)
+            return false;
+
+        boolean r1 = isSymmetric(root.left);
+        boolean r2 = isSymmetric(root.right);
+
+        return r1 && r2;
+    }
+
+
     public void inorderTraversal(TreeNode root,List<Integer> list) {
         if (root==null)
             return;
