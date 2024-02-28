@@ -76,7 +76,6 @@ public class Main {
             pre = cur;
             cur = head;
         }
-
         return pre;
     }
 
